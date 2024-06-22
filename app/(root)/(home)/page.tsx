@@ -4,7 +4,7 @@ import React from "react";
 const Home = () => {
   const now = new Date();
 
-  const time = now.toLocaleTimeString("en-US", {
+  const time = now.toLocaleTimeString("en-us", {
     hour: "2-digit",
     minute: "2-digit",
   });
