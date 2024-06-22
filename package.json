@@ -9,14 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
-<<<<<<< HEAD
-    "@clerk/nextjs": "^5.1.6",
-    "@radix-ui/react-dialog": "^1.0.5",
-=======
     "@clerk/nextjs": "^5.0.8",
     "@radix-ui/react-dialog": "^1.1.1",
->>>>>>> 7f0e844d0e67cffe2e18919ed7b1879b48dc819e
+    "@radix-ui/react-dropdown-menu": "^2.1.1",
     "@radix-ui/react-slot": "^1.0.2",
+    "@radix-ui/react-toast": "^1.2.1",
+    "@stream-io/node-sdk": "^0.2.6",
     "@stream-io/video-react-sdk": "^1.2.5",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
