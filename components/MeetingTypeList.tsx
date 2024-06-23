@@ -9,10 +9,10 @@ import MeetingModal from "./MeetingModal";
 import { Call, useStreamVideoClient } from "@stream-io/video-react-sdk";
 import { useUser } from "@clerk/nextjs";
 import Loader from "./Loader";
-import { useToast } from "@/components/ui/use-toast";
-// import { Textarea } from "./ui/textarea";
-// import ReactDatePicker from "react-datepicker";
-// import { Input } from "./ui/input";
+import { Textarea } from "./ui/textarea";
+import ReactDatePicker from "react-datepicker";
+import { useToast } from "./ui/use-toast";
+import { Input } from "./ui/input";
 
 const initialValues = {
   dateTime: new Date(),
@@ -99,7 +99,7 @@ const MeetingTypeList = () => {
         handleClick={() => router.push("/recordings")}
       />
 
-      {/* {!callDetail ? (
+      {!callDetail ? (
         <MeetingModal
           isOpen={meetingState === "isScheduleMeeting"}
           onClose={() => setMeetingState(undefined)}
@@ -162,7 +162,7 @@ const MeetingTypeList = () => {
           onChange={(e) => setValues({ ...values, link: e.target.value })}
           className="border-none bg-dark-3 focus-visible:ring-0 focus-visible:ring-offset-0"
         />
-      </MeetingModal> */}
+      </MeetingModal>
 
       <MeetingModal
         isOpen={meetingState === "isInstantMeeting"}
