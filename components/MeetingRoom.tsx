@@ -1,15 +1,13 @@
 import { cn } from "@/lib/utils";
 import {
   CallControls,
+  CallingState,
   CallParticipantsList,
   CallStatsButton,
-  CallingState,
   PaginatedGridLayout,
   SpeakerLayout,
   useCallStateHooks,
 } from "@stream-io/video-react-sdk";
-import { useRouter } from "next/router";
-import React, { useState } from "react";
 
 import {
   DropdownMenu,
@@ -20,6 +18,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
+import React, { useState } from "react";
 import { LayoutList, Users } from "lucide-react";
 import { useSearchParams } from "next/navigation";
 import EndCallButton from "./EndCallButton";
@@ -28,13 +27,13 @@ import Loader from "./Loader";
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
 const MeetingRoom = () => {
+  const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
+
   const searchParams = useSearchParams();
   const isPersonalRoom = !!searchParams.get("personal");
-  const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
-  const [showParticipants, setShowParticipants] = useState(false);
-  // const router = useRouter();
-  const { useCallCallingState } = useCallStateHooks();
 
+  const [showParticipants, setShowParticipants] = useState(false);
+  const { useCallCallingState } = useCallStateHooks();
   const callingState = useCallCallingState();
 
   if (callingState !== CallingState.JOINED) return <Loader />;
@@ -51,9 +50,9 @@ const MeetingRoom = () => {
   };
 
   return (
-    <section className="relative h-screen w-full overflow-hidden pt-4 text-white">
+    <section className="relative h-screen w-full overflow-hidden pt-4">
       <div className="relative flex size-full items-center justify-center">
-        <div className=" flex size-full max-w-[1000px] items-center">
+        <div className="flex size-full max-w-[1000px] items-center">
           <CallLayout />
         </div>
         <div
@@ -64,8 +63,7 @@ const MeetingRoom = () => {
           <CallParticipantsList onClose={() => setShowParticipants(false)} />
         </div>
       </div>
-
-      <div className="fixed bottom-0 flex w-full items-center justify-center gap-5">
+      <div className="fixed bottom-0 flex w-full items-center justify-center gap-5 flex-wrap">
         <CallControls />
 
         <DropdownMenu>
