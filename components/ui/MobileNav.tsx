@@ -33,10 +33,10 @@ const MobileNav = () => {
               src="/icons/logo.svg"
               width={55}
               height={55}
-              alt="AJAY LOGO"
+              alt="FACEBOX"
               className="max-sm:size-10"
             />
-            <p className="text-[26px] font-extrabold text-white">AJAY</p>
+            <p className="text-[26px] font-extrabold text-white">FACEBOX</p>
           </Link>
           <div className="flex h-[calc(100vh-72px)] flex-col justify-between overflow-y-auto">
             <SheetClose asChild>
