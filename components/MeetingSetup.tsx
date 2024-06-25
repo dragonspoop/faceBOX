@@ -22,11 +22,6 @@ const MeetingSetup = ({
       "useStreamCall must be used within a StreamCall component."
     );
   }
-  const { user } = useUser();
-
-  const meetingId = user?.id;
-
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
 
   const [isMicCamToggled, setIsMicCamToggled] = useState(false);
 
@@ -64,17 +59,6 @@ const MeetingSetup = ({
         }}
       >
         Join meeting
-      </Button>
-      <Button
-        className="bg-dark-3"
-        onClick={() => {
-          navigator.clipboard.writeText(meetingLink);
-          toast({
-            title: "Link Copied",
-          });
-        }}
-      >
-        Copy Invitation
       </Button>
     </div>
   );
