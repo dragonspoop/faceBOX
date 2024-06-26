@@ -36,9 +36,7 @@ const MeetingRoom = () => {
   const [showParticipants, setShowParticipants] = useState(false);
   const { useCallCallingState } = useCallStateHooks();
 
-  const { user } = useUser();
-  const meetingId = user?.id;
-  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
+  const meetingLink = window.location.href;
 
   const callingState = useCallCallingState();
 
