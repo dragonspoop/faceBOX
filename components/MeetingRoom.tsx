@@ -22,6 +22,9 @@ import {
 import Loader from "./Loader";
 import EndCallButton from "./EndCallButton";
 import { cn } from "@/lib/utils";
+import { Button } from "./ui/button";
+import { toast } from "./ui/use-toast";
+import { useUser } from "@clerk/nextjs";
 
 type CallLayoutType = "grid" | "speaker-left" | "speaker-right";
 
@@ -32,6 +35,10 @@ const MeetingRoom = () => {
   const [layout, setLayout] = useState<CallLayoutType>("speaker-left");
   const [showParticipants, setShowParticipants] = useState(false);
   const { useCallCallingState } = useCallStateHooks();
+
+  const { user } = useUser();
+  const meetingId = user?.id;
+  const meetingLink = `${process.env.NEXT_PUBLIC_BASE_URL}/meeting/${meetingId}?personal=true`;
 
   const callingState = useCallCallingState();
 
@@ -87,6 +94,19 @@ const MeetingRoom = () => {
           </DropdownMenuContent>
         </DropdownMenu>
         <CallStatsButton />
+
+        <Button
+          className="bg-dark-3"
+          onClick={() => {
+            navigator.clipboard.writeText(meetingLink);
+            toast({
+              title: "Link Copied",
+            });
+          }}
+        >
+          Copy Invitation
+        </Button>
+
         <button onClick={() => setShowParticipants((prev) => !prev)}>
           <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
             <Users size={20} className="text-white" />
