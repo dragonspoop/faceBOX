@@ -91,8 +91,13 @@ const MeetingRoom = () => {
             ))}
           </DropdownMenuContent>
         </DropdownMenu>
-        <CallStatsButton />
+        {/* <CallStatsButton /> */}
 
+        <button onClick={() => setShowParticipants((prev) => !prev)}>
+          <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
+            <Users size={20} className="text-white" />
+          </div>
+        </button>
         <Button
           className="bg-dark-3"
           onClick={() => {
@@ -104,12 +109,6 @@ const MeetingRoom = () => {
         >
           Copy Invitation
         </Button>
-
-        <button onClick={() => setShowParticipants((prev) => !prev)}>
-          <div className=" cursor-pointer rounded-2xl bg-[#19232d] px-4 py-2 hover:bg-[#4c535b]  ">
-            <Users size={20} className="text-white" />
-          </div>
-        </button>
         {!isPersonalRoom && <EndCallButton />}
       </div>
     </section>
